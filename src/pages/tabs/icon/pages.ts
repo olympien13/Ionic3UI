@@ -23,14 +23,8 @@ export class TabIconContentPage {
 }
 
 @Component({
-  template: `
-  <ion-tabs class="tabs-icon" [color]="isAndroid ? 'danger' : 'primary'">
-    <ion-tab tabIcon="contact" [root]="rootPage"></ion-tab>
-    <ion-tab tabIcon="compass" [root]="rootPage"></ion-tab>
-    <ion-tab tabIcon="analytics" [root]="rootPage"></ion-tab>
-    <ion-tab tabIcon="settings" [root]="rootPage"></ion-tab>
-  </ion-tabs>
-`})
+  templateUrl: 'template.html'
+})
 export class IconPage {
   rootPage = TabIconContentPage;
 

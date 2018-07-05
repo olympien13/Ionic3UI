@@ -18,7 +18,9 @@ export class NavigationDetailsPage {
   template: `
 <ion-header>
   <ion-navbar>
-    <ion-title>Navigation</ion-title>
+  <button ion-button menuToggle>
+  <ion-icon name="menu"></ion-icon>
+  </button><ion-title>Navigation</ion-title>
   </ion-navbar>
 </ion-header>
 

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { Platform } from 'ionic-angular';
 
-
 @Component({
   template: `
     <ion-header>
@@ -23,13 +22,12 @@ export class TabBasicContentPage {
 }
 
 @Component({
-  template: `
-    <ion-tabs class="tabs-basic">
-      <ion-tab tabTitle="Music" [root]="rootPage"></ion-tab>
-      <ion-tab tabTitle="Movies" [root]="rootPage"></ion-tab>
-      <ion-tab tabTitle="Games" [root]="rootPage"></ion-tab>
-    </ion-tabs>
-`})
+  templateUrl: 'template.html'
+})
 export class BasicPage {
   rootPage = TabBasicContentPage;
+  constructor() {
+
+  }
+
 }

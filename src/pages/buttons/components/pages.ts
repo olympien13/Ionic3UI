@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   templateUrl: 'components.html'
 })
-export class ComponentsPage { }
+export class ComponentsPage {
+
+  constructor() { }
+}

@@ -1,3 +1,12 @@
+import { ToolbarsListPage } from './../pages/toolbar/page-toolbar-list';
+import { TabsListPage } from './../pages/tabs/page-tabs-list';
+import { ListsListPage } from './../pages/lists/page-lists-list';
+import { InputsListPage } from './../pages/inputs/page-inputs-list';
+import { CardsListPage } from './../pages/cards/page-card-list';
+import { ButtonsListPage } from './../pages/buttons/page-buttons-list';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { GlobalVariables } from './globals';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule } from 'ionic-angular';
@@ -134,15 +143,17 @@ import { Page4 as ToolbarColorsPage4 } from '../pages/toolbar/colors/pages';
 import { SearchbarPage as ToolbarSearchbarPage } from '../pages/toolbar/searchbar/pages';
 import { SegmentPage as ToolbarSegmentPage } from '../pages/toolbar/segment/pages';
 
-// pipes
-import { DisplayRoutePipe } from '../pipes/display-route';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+
+// Fab
+import { AlertListPage } from '../pages/alerts/page-alerts-list';
 
 @NgModule({
   declarations: [
     MyApp,
 
     ActionSheetBasicPage,
-
+    AlertListPage,
     AlertBasicPage,
     AlertCheckboxPage,
     AlertConfirmPage,
@@ -160,6 +171,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     ButtonOutlinePage,
     ButtonRoundPage,
     ButtonSizesPage,
+    ButtonsListPage,
 
     FabBasicPage,
 
@@ -171,6 +183,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     CardHeaderPage,
     CardImagePage,
     CardListPage,
+    CardsListPage,
 
     CheckboxBasicPage,
 
@@ -189,6 +202,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     InputInsetPage,
     InputPlaceholderPage,
     InputStackedPage,
+    InputsListPage,
 
     ListAvatarPage,
     ListBasicPage,
@@ -200,6 +214,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     ListNoLinesPage,
     ListSlidingPage,
     ListThumbnailPage,
+    ListsListPage,
 
     LoadingBasicPage,
 
@@ -240,6 +255,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
 
     TabIconTextPage,
     TabIconTextContentPage,
+    TabsListPage,
 
     ToastBasicPage,
 
@@ -253,130 +269,129 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     ToolbarColorsPage4,
     ToolbarSearchbarPage,
     ToolbarSegmentPage,
-
-    DisplayRoutePipe
+    ToolbarsListPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
       statusbarPadding: true,
-     },
-     {
-       links: [
-        { component: ActionSheetBasicPage, name: 'ActionSheetBasicPage', segment: 'action-sheet-basic' },
+    },
+      {
+        links: [
+          { component: ActionSheetBasicPage, name: 'ActionSheetBasicPage', segment: 'action-sheet-basic' },
 
-        { component: AlertBasicPage, name: 'AlertBasicPage', segment: 'alert-basic' },
-        { component: AlertCheckboxPage, name: 'AlertCheckboxPage', segment: 'alert-checkbox' },
-        { component: AlertConfirmPage, name: 'AlertConfirmPage', segment: 'alert-confirm' },
-        { component: AlertPromptPage, name: 'AlertPromptPage', segment: 'alert-prompt' },
-        { component: AlertRadioPage, name: 'AlertRadioPage', segment: 'alert-radio' },
+          { component: AlertBasicPage, name: 'AlertBasicPage', segment: 'alert-basic' },
+          { component: AlertCheckboxPage, name: 'AlertCheckboxPage', segment: 'alert-checkbox' },
+          { component: AlertConfirmPage, name: 'AlertConfirmPage', segment: 'alert-confirm' },
+          { component: AlertPromptPage, name: 'AlertPromptPage', segment: 'alert-prompt' },
+          { component: AlertRadioPage, name: 'AlertRadioPage', segment: 'alert-radio' },
 
 
-        { component: BadgeBasicPage, name: 'BadgeBasicPage', segment: 'badge-basic' },
+          { component: BadgeBasicPage, name: 'BadgeBasicPage', segment: 'badge-basic' },
 
-        { component: ButtonBasicPage, name: 'ButtonBasicPage', segment: 'button-basic' },
-        { component: ButtonBlockPage, name: 'ButtonBlockPage', segment: 'button-block' },
-        { component: ButtonClearPage, name: 'ButtonClearPage', segment: 'button-clear' },
-        { component: ButtonComponentsPage, name: 'ButtonComponentsPage', segment: 'button-components' },
-        { component: ButtonFullPage, name: 'ButtonFullPage', segment: 'button-full' },
-        { component: ButtonIconsPage, name: 'ButtonIconsPage', segment: 'button-icons' },
-        { component: ButtonOutlinePage, name: 'ButtonOutlinePage', segment: 'button-outline' },
-        { component: ButtonRoundPage, name: 'ButtonRoundPage', segment: 'button-round' },
-        { component: ButtonSizesPage, name: 'ButtonSizesPage', segment: 'button-sizes' },
+          { component: ButtonBasicPage, name: 'ButtonBasicPage', segment: 'button-basic' },
+          { component: ButtonBlockPage, name: 'ButtonBlockPage', segment: 'button-block' },
+          { component: ButtonClearPage, name: 'ButtonClearPage', segment: 'button-clear' },
+          { component: ButtonComponentsPage, name: 'ButtonComponentsPage', segment: 'button-components' },
+          { component: ButtonFullPage, name: 'ButtonFullPage', segment: 'button-full' },
+          { component: ButtonIconsPage, name: 'ButtonIconsPage', segment: 'button-icons' },
+          { component: ButtonOutlinePage, name: 'ButtonOutlinePage', segment: 'button-outline' },
+          { component: ButtonRoundPage, name: 'ButtonRoundPage', segment: 'button-round' },
+          { component: ButtonSizesPage, name: 'ButtonSizesPage', segment: 'button-sizes' },
 
-        { component: FabBasicPage, name: 'FabBasicPage', segment: 'fab-basic' },
+          { component: FabBasicPage, name: 'FabBasicPage', segment: 'fab-basic' },
 
-        { component: CardAdvancedMapPage, name: 'CardAdvancedMapPage', segment: 'card-advanced-map' },
-        { component: CardAdvancedSocialPage, name: 'CardAdvancedSocialPage', segment: 'card-advanced-social' },
-        { component: CardAdvancedWeatherPage, name: 'CardAdvancedWeatherPage', segment: 'card-advanced-weather' },
-        { component: CardBackgroundPage, name: 'CardBackgroundPage', segment: 'card-background' },
-        { component: CardBasicPage, name: 'CardBasicPage', segment: 'card-basic' },
-        { component: CardHeaderPage, name: 'CardHeaderPage', segment: 'card-header' },
-        { component: CardImagePage, name: 'CardImagePage', segment: 'card-image' },
-        { component: CardListPage, name: 'CardListPage', segment: 'card-list' },
+          { component: CardAdvancedMapPage, name: 'CardAdvancedMapPage', segment: 'card-advanced-map' },
+          { component: CardAdvancedSocialPage, name: 'CardAdvancedSocialPage', segment: 'card-advanced-social' },
+          { component: CardAdvancedWeatherPage, name: 'CardAdvancedWeatherPage', segment: 'card-advanced-weather' },
+          { component: CardBackgroundPage, name: 'CardBackgroundPage', segment: 'card-background' },
+          { component: CardBasicPage, name: 'CardBasicPage', segment: 'card-basic' },
+          { component: CardHeaderPage, name: 'CardHeaderPage', segment: 'card-header' },
+          { component: CardImagePage, name: 'CardImagePage', segment: 'card-image' },
+          { component: CardListPage, name: 'CardListPage', segment: 'card-list' },
 
-        { component: CheckboxBasicPage, name: 'CheckboxBasicPage', segment: 'checkbox-basic' },
+          { component: CheckboxBasicPage, name: 'CheckboxBasicPage', segment: 'checkbox-basic' },
 
-        { component: DatetimeBasicPage, name: 'DatetimeBasicPage', segment: 'datetime-basic' },
+          { component: DatetimeBasicPage, name: 'DatetimeBasicPage', segment: 'datetime-basic' },
 
-        { component: GestureBasicPage, name: 'GestureBasicPage', segment: 'gesture-basic' },
+          { component: GestureBasicPage, name: 'GestureBasicPage', segment: 'gesture-basic' },
 
-        { component: GridBasicPage, name: 'GridBasicPage', segment: 'grid-basic' },
+          { component: GridBasicPage, name: 'GridBasicPage', segment: 'grid-basic' },
 
-        { component: IconBasicPage, name: 'IconBasicPage', segment: 'icon-basic' },
+          { component: IconBasicPage, name: 'IconBasicPage', segment: 'icon-basic' },
 
-        { component: InputBasicPage, name: 'InputBasicPage', segment: 'input-basic' },
-        { component: InputFloatingPage, name: 'InputFloatingPage', segment: 'input-floating' },
-        { component: InputFixedInlinePage, name: 'InputFixedInlinePage', segment: 'input-fixed-inline' },
-        { component: InputInlinePage, name: 'InputInlinePage', segment: 'input-inline' },
-        { component: InputInsetPage, name: 'InputInsetPage', segment: 'input-inset' },
-        { component: InputPlaceholderPage, name: 'InputPlaceholderPage', segment: 'input-placeholder' },
-        { component: InputStackedPage, name: 'InputStackedPage', segment: 'input-stacked' },
+          { component: InputBasicPage, name: 'InputBasicPage', segment: 'input-basic' },
+          { component: InputFloatingPage, name: 'InputFloatingPage', segment: 'input-floating' },
+          { component: InputFixedInlinePage, name: 'InputFixedInlinePage', segment: 'input-fixed-inline' },
+          { component: InputInlinePage, name: 'InputInlinePage', segment: 'input-inline' },
+          { component: InputInsetPage, name: 'InputInsetPage', segment: 'input-inset' },
+          { component: InputPlaceholderPage, name: 'InputPlaceholderPage', segment: 'input-placeholder' },
+          { component: InputStackedPage, name: 'InputStackedPage', segment: 'input-stacked' },
 
-        { component: ListAvatarPage, name: 'ListAvatarPage', segment: 'list-avatar' },
-        { component: ListBasicPage, name: 'ListBasicPage', segment: 'list-basic' },
-        { component: ListDividersPage, name: 'ListDividersPage', segment: 'list-dividers' },
-        { component: ListHeadersPage, name: 'ListHeadersPage', segment: 'list-headers' },
-        { component: ListIconPage, name: 'ListIconPage', segment: 'list-icon' },
-        { component: ListInsetPage, name: 'ListInsetPage', segment: 'list-inset' },
-        { component: ListMultilinePage, name: 'ListMultilinePage', segment: 'list-multiline' },
-        { component: ListNoLinesPage, name: 'ListNoLinesPage', segment: 'list-no-lines' },
-        { component: ListSlidingPage, name: 'ListSlidingPage', segment: 'list-sliding' },
-        { component: ListThumbnailPage, name: 'ListThumbnailPage', segment: 'list-thumbnail' },
+          { component: ListAvatarPage, name: 'ListAvatarPage', segment: 'list-avatar' },
+          { component: ListBasicPage, name: 'ListBasicPage', segment: 'list-basic' },
+          { component: ListDividersPage, name: 'ListDividersPage', segment: 'list-dividers' },
+          { component: ListHeadersPage, name: 'ListHeadersPage', segment: 'list-headers' },
+          { component: ListIconPage, name: 'ListIconPage', segment: 'list-icon' },
+          { component: ListInsetPage, name: 'ListInsetPage', segment: 'list-inset' },
+          { component: ListMultilinePage, name: 'ListMultilinePage', segment: 'list-multiline' },
+          { component: ListNoLinesPage, name: 'ListNoLinesPage', segment: 'list-no-lines' },
+          { component: ListSlidingPage, name: 'ListSlidingPage', segment: 'list-sliding' },
+          { component: ListThumbnailPage, name: 'ListThumbnailPage', segment: 'list-thumbnail' },
 
-        { component: LoadingBasicPage, name: 'LoadingBasicPage', segment: 'loading-basic' },
+          { component: LoadingBasicPage, name: 'LoadingBasicPage', segment: 'loading-basic' },
 
-        { component: MenuBasicPage, name: 'MenuBasicPage', segment: 'menu-basic' },
-        { component: MenuPageOne, name: 'MenuPageOne', segment: 'menu-one' },
-        { component: MenuPageTwo, name: 'MenuPageTwo', segment: 'menu-two' },
-        { component: MenuPageThree, name: 'MenuPageThree', segment: 'menu-three' },
+          { component: MenuBasicPage, name: 'MenuBasicPage', segment: 'menu-basic' },
+          { component: MenuPageOne, name: 'MenuPageOne', segment: 'menu-one' },
+          { component: MenuPageTwo, name: 'MenuPageTwo', segment: 'menu-two' },
+          { component: MenuPageThree, name: 'MenuPageThree', segment: 'menu-three' },
 
-        { component: ModalBasicPage, name: 'ModalBasicPage', segment: 'modal-basic' },
-        { component: ModalContentPage, name: 'ModalContentPage', segment: 'modal-content' },
+          { component: ModalBasicPage, name: 'ModalBasicPage', segment: 'modal-basic' },
+          { component: ModalContentPage, name: 'ModalContentPage', segment: 'modal-content' },
 
-        { component: NavigationBasicPage, name: 'NavigationBasicPage', segment: 'navigation-basic' },
-        { component: NavigationDetailsPage, name: 'NavigationDetailsPage', segment: 'navigation-details' },
+          { component: NavigationBasicPage, name: 'NavigationBasicPage', segment: 'navigation-basic' },
+          { component: NavigationDetailsPage, name: 'NavigationDetailsPage', segment: 'navigation-details' },
 
-        { component: PopoverBasicPage, name: 'PopoverBasicPage', segment: 'popover-basic' },
-        { component: PopoverContentPage, name: 'PopoverContentPage', segment: 'popover-content' },
+          { component: PopoverBasicPage, name: 'PopoverBasicPage', segment: 'popover-basic' },
+          { component: PopoverContentPage, name: 'PopoverContentPage', segment: 'popover-content' },
 
-        { component: RadioBasicPage, name: 'RadioBasicPage', segment: 'radio-basic' },
+          { component: RadioBasicPage, name: 'RadioBasicPage', segment: 'radio-basic' },
 
-        { component: RangeBasicPage, name: 'RangeBasicPage', segment: 'range-basic' },
+          { component: RangeBasicPage, name: 'RangeBasicPage', segment: 'range-basic' },
 
-        { component: SearchbarBasicPage, name: 'SearchbarBasicPage', segment: 'searchbar-basic' },
+          { component: SearchbarBasicPage, name: 'SearchbarBasicPage', segment: 'searchbar-basic' },
 
-        { component: SegmentBasicPage, name: 'SegmentBasicPage', segment: 'segment-basic' },
+          { component: SegmentBasicPage, name: 'SegmentBasicPage', segment: 'segment-basic' },
 
-        { component: SelectBasicPage, name: 'SelectBasicPage', segment: 'select-basic' },
+          { component: SelectBasicPage, name: 'SelectBasicPage', segment: 'select-basic' },
 
-        { component: SlideBasicPage, name: 'SlideBasicPage', segment: 'slide-basic' },
+          { component: SlideBasicPage, name: 'SlideBasicPage', segment: 'slide-basic' },
 
-        { component: TabBadgesPage, name: 'TabBadgesPage', segment: 'tab-badges' },
-        { component: TabBasicPage, name: 'TabBasicPage', segment: 'tab-basic' },
-        { component: TabIconPage, name: 'TabIconPage', segment: 'tab-icon' },
-        { component: TabIconTextPage, name: 'TabIconTextPage', segment: 'tab-icon-text' },
+          { component: TabBadgesPage, name: 'TabBadgesPage', segment: 'tab-badges' },
+          { component: TabBasicPage, name: 'TabBasicPage', segment: 'tab-basic' },
+          { component: TabIconPage, name: 'TabIconPage', segment: 'tab-icon' },
+          { component: TabIconTextPage, name: 'TabIconTextPage', segment: 'tab-icon-text' },
 
-        { component: ToastBasicPage, name: 'ToastBasicPage', segment: 'toast-basic' },
+          { component: ToastBasicPage, name: 'ToastBasicPage', segment: 'toast-basic' },
 
-        { component: ToggleBasicPage, name: 'ToggleBasicPage', segment: 'toggle-basic' },
+          { component: ToggleBasicPage, name: 'ToggleBasicPage', segment: 'toggle-basic' },
 
-        { component: ToolbarBasicPage, name: 'ToolbarBasicPage', segment: 'toolbar-basic' },
-        { component: ToolbarButtonsPage, name: 'ToolbarButtonsPage', segment: 'toolbar-buttons' },
-        { component: ToolbarColorsPage, name: 'ToolbarColorsPage', segment: 'toolbar-colors' },
-        { component: ToolbarColorsPage2, name: 'ToolbarColorsPage2', segment: 'toolbar-colors2' },
-        { component: ToolbarColorsPage3, name: 'ToolbarColorsPage3', segment: 'toolbar-colors3' },
-        { component: ToolbarColorsPage4, name: 'ToolbarColorsPage4', segment: 'toolbar-colors4' },
-        { component: ToolbarSearchbarPage, name: 'ToolbarSearchbarPage', segment: 'toolbar-searchbar' },
-        { component: ToolbarSegmentPage, name: 'ToolbarSegmentPage', segment: 'toolbar-segment' }
-       ]
-    })
+          { component: ToolbarBasicPage, name: 'ToolbarBasicPage', segment: 'toolbar-basic' },
+          { component: ToolbarButtonsPage, name: 'ToolbarButtonsPage', segment: 'toolbar-buttons' },
+          { component: ToolbarColorsPage, name: 'ToolbarColorsPage', segment: 'toolbar-colors' },
+          { component: ToolbarColorsPage2, name: 'ToolbarColorsPage2', segment: 'toolbar-colors2' },
+          { component: ToolbarColorsPage3, name: 'ToolbarColorsPage3', segment: 'toolbar-colors3' },
+          { component: ToolbarColorsPage4, name: 'ToolbarColorsPage4', segment: 'toolbar-colors4' },
+          { component: ToolbarSearchbarPage, name: 'ToolbarSearchbarPage', segment: 'toolbar-searchbar' },
+          { component: ToolbarSegmentPage, name: 'ToolbarSegmentPage', segment: 'toolbar-segment' }
+        ]
+      })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     ActionSheetBasicPage,
-
+    AlertListPage,
     AlertBasicPage,
     AlertCheckboxPage,
     AlertConfirmPage,
@@ -394,6 +409,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     ButtonOutlinePage,
     ButtonRoundPage,
     ButtonSizesPage,
+    ButtonsListPage,
 
     FabBasicPage,
 
@@ -405,6 +421,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     CardHeaderPage,
     CardImagePage,
     CardListPage,
+    CardsListPage,
 
     CheckboxBasicPage,
 
@@ -423,6 +440,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     InputInsetPage,
     InputPlaceholderPage,
     InputStackedPage,
+    InputsListPage,
 
     ListAvatarPage,
     ListBasicPage,
@@ -434,6 +452,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     ListNoLinesPage,
     ListSlidingPage,
     ListThumbnailPage,
+    ListsListPage,
 
     LoadingBasicPage,
 
@@ -474,6 +493,7 @@ import { DisplayRoutePipe } from '../pipes/display-route';
 
     TabIconTextPage,
     TabIconTextContentPage,
+    TabsListPage,
 
     ToastBasicPage,
 
@@ -486,8 +506,10 @@ import { DisplayRoutePipe } from '../pipes/display-route';
     ToolbarColorsPage3,
     ToolbarColorsPage4,
     ToolbarSearchbarPage,
-    ToolbarSegmentPage
+    ToolbarSegmentPage,
+    ToolbarsListPage
   ],
-  providers: []
+  providers: [GlobalVariables, NativePageTransitions, StatusBar,
+    SplashScreen]
 })
 export class AppModule { }
