@@ -1,3 +1,14 @@
+import { SelectOptionsPage } from './../pages/selectoption/selectoption';
+import { MockProviderInfiniteScroll } from './../pages/infinitescroll/provider';
+import { InfiniteScrollPage } from './../pages/infinitescroll/infinitescroll';
+import { ScrollPage } from './../pages/scroll/scroll';
+
+import { LoadingControllerPage2 } from './../pages/loadingcontroller/loadingcontroller2';
+import { LoadingControllerPage } from './../pages/loadingcontroller/loadingcontroller';
+import { SlidePage } from './../pages/slide/slide';
+import { ChipPage } from './../pages/chip/chip';
+import { MockProvider } from './../pages/refresher/provider';
+import { RefresherPage } from './../pages/refresher/refresher';
 import { ToolbarsListPage } from './../pages/toolbar/page-toolbar-list';
 import { TabsListPage } from './../pages/tabs/page-tabs-list';
 import { ListsListPage } from './../pages/lists/page-lists-list';
@@ -269,7 +280,16 @@ import { AlertListPage } from '../pages/alerts/page-alerts-list';
     ToolbarColorsPage4,
     ToolbarSearchbarPage,
     ToolbarSegmentPage,
-    ToolbarsListPage
+    ToolbarsListPage,
+
+    RefresherPage,
+    ChipPage,
+    SlidePage,
+    LoadingControllerPage,
+    LoadingControllerPage2,
+    ScrollPage,
+    InfiniteScrollPage,
+    SelectOptionsPage
   ],
   imports: [
     BrowserModule,
@@ -507,9 +527,18 @@ import { AlertListPage } from '../pages/alerts/page-alerts-list';
     ToolbarColorsPage4,
     ToolbarSearchbarPage,
     ToolbarSegmentPage,
-    ToolbarsListPage
+    ToolbarsListPage,
+
+    RefresherPage,
+    ChipPage,
+    SlidePage,
+    LoadingControllerPage,
+    LoadingControllerPage2,
+    ScrollPage,
+    InfiniteScrollPage,
+    SelectOptionsPage
   ],
   providers: [GlobalVariables, NativePageTransitions, StatusBar,
-    SplashScreen]
+    SplashScreen, MockProvider, MockProviderInfiniteScroll]
 })
 export class AppModule { }

@@ -1,3 +1,9 @@
+import { SelectOptionsPage } from './../pages/selectoption/selectoption';
+import { InfiniteScrollPage } from './../pages/infinitescroll/infinitescroll';
+import { ScrollPage } from './../pages/scroll/scroll';
+import { LoadingControllerPage } from './../pages/loadingcontroller/loadingcontroller';
+import { ChipPage } from './../pages/chip/chip';
+import { RefresherPage } from './../pages/refresher/refresher';
 import { TabsListPage } from './../pages/tabs/page-tabs-list';
 
 import { ListsListPage } from './../pages/lists/page-lists-list';
@@ -75,6 +81,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InputsListPage } from '../pages/inputs/page-inputs-list';
 import { ToolbarsListPage } from '../pages/toolbar/page-toolbar-list';
+import { SlidePage } from '../pages/slide/slide';
 
 @Component({
   templateUrl: 'app.template.html'
@@ -113,28 +120,35 @@ export class MyApp implements AfterContentInit {
       { title: 'Buttons', component: ButtonsListPage },
       { title: 'Cards', component: CardsListPage },
       { title: 'Checkbox', component: CheckboxBasicPage },
+      { title: 'Chip', component: ChipPage },
       { title: 'DateTime', component: DatetimeBasicPage },
       { title: 'Floating Action Buttons', component: FabBasicPage },
       { title: 'Events', component: GestureBasicPage },
       { title: 'Grid', component: GridBasicPage },
       { title: 'Icons', component: IconBasicPage },
       { title: 'Inputs', component: InputsListPage },
+      { title: 'InfiniteScroll', component: InfiniteScrollPage },
       { title: 'Lists', component: ListsListPage },
       { title: 'Loading', component: LoadingBasicPage },
+      { title: 'LoadingController', component: LoadingControllerPage },
       { title: 'Menu', component: MenuBasicPage },
       { title: 'Modals', component: ModalBasicPage },
       { title: 'Navigation', component: NavigationBasicPage },
       { title: 'Popover', component: PopoverBasicPage },
       { title: 'Radio', component: RadioBasicPage },
       { title: 'Range', component: RangeBasicPage },
+      { title: 'Refresher', component: RefresherPage },
+      { title: 'Scroll', component: ScrollPage },
       { title: 'SearchBar', component: SearchbarBasicPage },
       { title: 'Segment', component: SegmentBasicPage },
       { title: 'Select', component: SelectBasicPage },
+      { title: 'SelectOptions', component: SelectOptionsPage },
+      { title: 'Slide', component: SlidePage },
       { title: 'Slides', component: SlideBasicPage },
       { title: 'Tabs', component: TabsListPage },
       { title: 'Toast', component: ToastBasicPage },
       { title: 'Toggle', component: ToggleBasicPage },
-      { title: 'Toolbar', component: ToolbarsListPage },
+      { title: 'Toolbar', component: ToolbarsListPage }
     ];
     console.log("Exit constructor");
   }
